@@ -1,0 +1,63 @@
+<div class="container">
+  <h1> Train Builder</h1>
+
+  @if (train(); as t) {
+  <section class="train">
+    <div class="wagons" [class.invalid]="!t.valid">
+      @for (ch of t.wagons.split(''); track $index) {
+      <div class="wagon" [attr.data-type]="ch">
+        <span>{{ ch }}</span>
+        <small>#{{ $index }}</small>
+      </div>
+      }
+    </div>
+    <p class="status" [class.ok]="t.valid" [class.bad]="!t.valid">
+      {{ t.valid ? 'Valid ✅' : 'Invalid ❌' }} - {{ t.wagons }}
+    </p>
+  </section>
+  }
+
+  <section class="controls">
+    <div class="row">
+      <label>Reset:</label>
+      <input [(ngModel)]="resetValue" placeholder="0AAB0" />
+      <button (click)="doReset()">Reset</button>
+    </div>
+
+    <div class="row">
+      <label>Add Left:</label>
+      <select [(ngModel)]="leftType">
+        @for (t of types; track $index) {
+        <option [value]="t">{{ t }}</option>
+        }
+      </select>
+      <button (click)="addLeft()">Add</button>
+
+      <label>Add Right:</label>
+      <select [(ngModel)]="rightType">
+        @for (t of types; track $index) {
+        <option [value]="t">{{ t }}</option>
+        }
+      </select>
+      <button (click)="addRight()">Add</button>
+    </div>
+
+    <div class="row">
+      <label>Replace index:</label>
+      <input type="number" [(ngModel)]="replaceIndex" min="0" />
+      <label>with:</label>
+      <select [(ngModel)]="replaceType">
+        @for (t of types; track $index) {
+        <option [value]="t">{{ t }}</option>
+        }
+      </select>
+      <button (click)="replace()">Replace</button>
+    </div>
+
+    <div class="row">
+      <button (click)="removeLeft()">Remove Left</button>
+      <button (click)="removeRight()">Remove Right</button>
+      <button (click)="sort()">Auto-Sort</button>
+    </div>
+  </section>
+</div>

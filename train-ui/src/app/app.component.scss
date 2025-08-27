@@ -1,0 +1,15 @@
+.container { max-width: 900px; margin: 24px auto; padding: 12px; font-family: Inter, system-ui, sans-serif; }
+.train .wagons { display: flex; gap: 8px; padding: 12px; border-radius: 12px; background: #f6f7fb; }
+.train .wagons.invalid { background: #fff5f5; }
+.wagon { position: relative; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+.wagon[data-type='0'] { background: #e2e8f0; }
+.wagon[data-type='A'] { background: #d1fae5; }
+.wagon[data-type='B'] { background: #dbeafe; }
+.wagon small { position: absolute; bottom: 4px; right: 6px; color: #808; opacity: 0.5; font-size: 10px; }
+.status { margin: 8px 0 0; }
+.status.ok { color: #0a7; }
+.status.bad { color: #b00; }
+.controls { margin-top: 16px; display: grid; gap: 10px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+button { padding: 6px 10px; border-radius: 8px; border: 1px solid #ddd; background: white; cursor: pointer; }
+input, select { padding: 6px 8px; border-radius: 6px; border: 1px solid #ddd; }
